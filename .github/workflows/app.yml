@@ -1,0 +1,24 @@
+name: Run Unit Tests with Coverage
+
+on: [push, pull_request]
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Set up Flython
+      uses: actions/setup-python@v3git add .
+      with:
+        python-version: "3.11"
+
+    - name: Install dependencies
+      run: pip install pytest
+       
+    - name: Run unit tests
+      run: pytest --cov=your_module --cov-fail-under=90
